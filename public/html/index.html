@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD System</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">CRUD System</h1>
+      <form class="form" id="crud-form">
+        <input type="text" id="input-name" placeholder="Name" required />
+        <input type="email" id="input-email" placeholder="Email" required />
+        <input type="text" id="input-avatar-url" placeholder="avatar-url" />
+        <button type="submit">Create</button>
+      </form>
+      <table id="crud-table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>
+              <img
+                src="https://api.dicebear.com/6.x/adventurer/svg?seed=Jasper"
+                alt="Avatar 1"
+                class="avatar"
+              />
+            </td>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td class="actions">
+              <span class="edit">Edit </span>
+              |
+              <span class="delete"> Delete</span>
+              |
+              <span class="delete"> Add blog</span>
+            </td>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Table rows will be dynamically generated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CRUD Form and Table Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
