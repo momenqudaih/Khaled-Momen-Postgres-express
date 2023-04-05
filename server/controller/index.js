@@ -10,6 +10,8 @@ router.get('/', posts.getPosts)
 
 router.get('/hh', users.getUsers )
 
+router.post('/users', users.addUser)
+
 
 
 
