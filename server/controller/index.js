@@ -1,20 +1,19 @@
-const express = require('express')
+const express = require("express");
 
 const router = express.Router();
 
-const users = require('./users')
+const users = require("./users");
 
-const posts = require('./posts')
+const posts = require("./posts");
 
-router.get('/', posts.getPosts)
+router.get("/", posts.getPosts);
 
-router.get('/hh', users.getUsers )
+router.get("/hh", users.getUsers);
 
-router.post('/users', users.addUser)
+router.post("/users", users.addUser);
 
+router.put("/users", users.updateUserQuery);
 
-
-
-
+router.delete("/users/", users.deleteUserQuery);
 
 module.exports = router;

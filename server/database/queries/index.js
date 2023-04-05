@@ -1,10 +1,13 @@
-const { getAllUsres } = require('./getAllUsers')
-const { getAllPosts } = require('./getAllPosts')
-const { addUser } = require('./addUser')
-
+const { getAllUsres } = require("./getAllUsers");
+const { getAllPosts } = require("./getAllPosts");
+const { addUser } = require("./addUser");
+const { updateUserQuery } = require("./updateUserQuery");
+const { deleteUserQuery } = require("./deleteUserQuery");
 
 module.exports = {
-    getAllUsres,
-    getAllPosts,
-    addUser
-}
+  getAllUsres,
+  getAllPosts,
+  addUser,
+  updateUserQuery,
+  deleteUserQuery,
+};
