@@ -4,4 +4,4 @@ const getAllUsres = ()=>{
     return pool.query('SELECT * FROM users')
 }
 
-module.exports = getAllUsres
+module.exports = { getAllUsres }

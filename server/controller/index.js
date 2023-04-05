@@ -8,7 +8,7 @@ const posts = require('./posts')
 
 router.get('/', posts.getPosts)
 
-router.get('/users', users.getUsers )
+router.get('/hh', users.getUsers )
 
 
 

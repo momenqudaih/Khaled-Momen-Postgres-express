@@ -4,35 +4,22 @@ const avatarInput = document.querySelector("#input-avatar-url");
 const submitBtn = document.querySelector("#submitBtn");
 const tableBody = document.querySelector("#table-body");
 
-usersData = [
-  {
-    id: 2,
-    avatar_url: "https://api.dicebear.com/6.x/adventurer/svg?seed=Midnight",
-    name: "John Doe",
-    email: "johndoe@example.com",
-  },
-  {
-    id: 3,
-    avatar_url: "https://api.dicebear.com/6.x/adventurer/svg?seed=Midnight",
-    name: "John Doe",
-    email: "johndoe@example.com",
-  },
-];
-
-fetch("/users")
+fetch("/hh")
   .then((res) => res.json())
   .then((usersData) => {
+    
     tableBody.textContent = "";
     usersData.forEach((user) => {
+      console.log(user);
       tableBody.innerHTML += `<tr>
     <td>${user.id}</td>
     <td>
       <img
-        src="${user.avatar_url}"
+        src="${user.img_url}"
         class="avatar"
       />
     </td>
-    <td>${user.name}</td>
+    <td>${user.first_name + ' ' + user.last_name}</td>
     <td>${user.email}</td>
     <td class="actions">
       <span class="edit" onclick="editUser(${user.id})">Edit </span>

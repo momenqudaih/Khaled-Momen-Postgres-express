@@ -1,5 +1,5 @@
-const getAllUsres = require('./getAllUsers')
-const getAllPosts = require('./getAllPosts')
+const { getAllUsres } = require('./getAllUsers')
+const { getAllPosts } = require('./getAllPosts')
 
 
 module.exports = {
