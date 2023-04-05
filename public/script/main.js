@@ -19,7 +19,7 @@ fetch("/hh")
         class="avatar"
       />
     </td>
-    <td>${user.first_name + ' ' + user.last_name}</td>
+    <td>${user.name}</td>
     <td>${user.email}</td>
     <td class="actions">
       <span class="edit" onclick="editUser(${user.id})">Edit </span>
@@ -46,6 +46,7 @@ submitBtn.addEventListener("click", () => {
   })
     .then((res) => res.json())
     .then((usersData) => {
+      console.log(usersData);
       usersData.forEach((user) => {
         tableBody.innerHTML += `<tr>
       <td>${user.id}</td>
