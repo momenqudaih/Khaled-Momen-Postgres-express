@@ -1,11 +1,21 @@
-require('dotenv').config()
-const { Pool } = require('pg')
+require("dotenv").config();
+const { Pool } = require("pg");
+
+let dbUrl = "";
+
+if (process.env.NODE_ENV === "test") {
+  dbUrl = process.env.TEST_DB_URL;
+} else {
+  dbUrl = process.env.DB_URL;
+}
+
+if (!dbUrl) throw new Error("No Database URL!!!");
 
 const pool = new Pool({
-    connectionString: process.env.DB_URL,
-    ssl: false
-})
+  connectionString: dbUrl,
+  ssl: false,
+});
 
 module.exports = {
-    pool
-}
+  pool,
+};
