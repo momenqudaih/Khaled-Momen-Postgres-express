@@ -4,8 +4,7 @@ const avatarInput = document.querySelector("#input-avatar-url");
 const submitBtn = document.querySelector("#submitBtn");
 const tableBody = document.querySelector("#table-body");
 
-const popup = document.querySelector('.popup');
-
+const popup = document.querySelector(".popup");
 
 function createUserRow(user) {
   const tr = document.createElement("tr");
@@ -40,38 +39,32 @@ function createUserRow(user) {
   const separator = document.createTextNode(" | ");
   actionsTd.appendChild(separator);
 
-  editSpan.addEventListener('click', () => {
-
+  editSpan.addEventListener("click", () => {
     popup.style.display = "block";
 
     const updateName = document.getElementById("name");
-    updateName.value = user.name
+    updateName.value = user.name;
     const updateEmail = document.getElementById("email");
-    updateEmail.value = user.email
+    updateEmail.value = user.email;
     const updateImg = document.getElementById("image");
-    updateImg.value = user.img_url
-    const updateButton = document.querySelector('.update-button')
+    updateImg.value = user.img_url;
+    const updateButton = document.querySelector(".update-button");
 
-    updateButton.addEventListener('click', () => {
-      fetch('/users', {
-        method: 'PUT',
+    updateButton.addEventListener("click", () => {
+      fetch("/users", {
+        method: "PUT",
         headers: {
-          'Content-type': 'Application/json'
+          "Content-type": "Application/json",
         },
         body: JSON.stringify({
           id: user.id,
           name: updateName.value,
           email: updateEmail.value,
-          avatarInput: updateImg.value
-        })
-
-      })
-        .then(window.location.reload())
-    })
-
-
-
-  })
+          avatarInput: updateImg.value,
+        }),
+      }).then(window.location.reload());
+    });
+  });
 
   const deleteSpan = document.createElement("span");
   deleteSpan.classList.add("delete");
@@ -79,9 +72,7 @@ function createUserRow(user) {
   deleteSpan.onclick = function () {
     fetch(`/users/${user.id}`, {
       method: "DELETE",
-    }).then(
-      window.location.reload()
-    );
+    }).then(window.location.reload());
   };
   actionsTd.appendChild(deleteSpan);
 
@@ -129,5 +120,3 @@ submitBtn.addEventListener("click", () => {
       });
     });
 });
-
-
