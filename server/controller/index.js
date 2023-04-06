@@ -14,6 +14,6 @@ router.post("/users", users.addUser);
 
 router.put("/users", users.updateUserQuery);
 
-router.delete("/users/", users.deleteUserQuery);
+router.delete("/users/:id", users.deleteUserQuery);
 
 module.exports = router;

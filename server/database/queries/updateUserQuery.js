@@ -1,9 +1,9 @@
-const connection = require("../config/connection");
+const { pool } = require("../config/connection");
 
-const updateUserQuery = ({ id, name, email, img_url }) => {
-  return connection.query(
+const updateUserQuery = ({ id, name, email, avatarInput }) => {
+  return pool.query(
     "UPDATE users SET name = $1, email = $2, img_url = $3 WHERE id = $4 RETURNING *",
-    [name, email, img_url, id]
+    [name, email, avatarInput, id]
   );
 };
 
