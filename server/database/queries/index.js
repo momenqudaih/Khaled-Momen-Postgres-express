@@ -3,6 +3,7 @@ const { getAllPosts } = require("./getAllPosts");
 const { addUser } = require("./addUser");
 const { updateUserQuery } = require("./updateUserQuery");
 const { deleteUserQuery } = require("./deleteUserQuery");
+const { addPost } = require('./addPost')
 
 module.exports = {
   getAllUsres,
@@ -10,4 +11,5 @@ module.exports = {
   addUser,
   updateUserQuery,
   deleteUserQuery,
+  addPost
 };

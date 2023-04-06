@@ -3,8 +3,60 @@ const emailInput = document.querySelector("#input-email");
 const avatarInput = document.querySelector("#input-avatar-url");
 const submitBtn = document.querySelector("#submitBtn");
 const tableBody = document.querySelector("#table-body");
+const postsList = document.querySelector('.blog-posts')
 
-const popup = document.querySelector(".popup");
+const popup = document.querySelector('.popup');
+const addPostPop = document.querySelector('.post-pop')
+
+const renderBlogPost = (post)=>{
+  
+    const postDiv = document.createElement("div");
+    postDiv.className = "blog-post";
+  
+    const img = document.createElement("img");
+    img.src = post.post_img;
+    img.alt = "Blog Post ";
+    postDiv.appendChild(img);
+  
+    const h2 = document.createElement("h2");
+    h2.textContent = post.title;
+    postDiv.appendChild(h2);
+  
+    const postOwnerDiv = document.createElement("div");
+    postOwnerDiv.className = "post-owner";
+  
+    const userAvatarImg = document.createElement("img");
+    userAvatarImg.className = "user-avatar";
+    userAvatarImg.src = post.img_url;
+    postOwnerDiv.appendChild(userAvatarImg);
+  
+    const userNameP = document.createElement("p");
+    userNameP.className = "user-name";
+    userNameP.textContent = post.name;
+    postOwnerDiv.appendChild(userNameP);
+  
+    const postDateP = document.createElement("p");
+    postDateP.className = "post-date";
+    postDateP.textContent = post.post_date;
+    postOwnerDiv.appendChild(postDateP);
+  
+    postDiv.appendChild(postOwnerDiv);
+  
+    return postDiv;
+  
+  
+}
+
+fetch('/posts')
+.then(result => result.json())
+.then((result)=>{
+  console.log();(result)
+  postsList.textContent = ''
+  result.forEach((item)=>{
+    postsList.appendChild(renderBlogPost(item))
+  })
+})
+
 
 function createUserRow(user) {
   const tr = document.createElement("tr");
@@ -82,9 +134,32 @@ function createUserRow(user) {
   const addBlogSpan = document.createElement("span");
   addBlogSpan.classList.add("add-blog");
   addBlogSpan.textContent = "Add blog";
-  addBlogSpan.onclick = function () {
-    addBlog(user.id);
-  };
+  addBlogSpan.style.cursor = 'pointer'
+  
+  addBlogSpan.addEventListener('click',()=>{
+    addPostPop.style.display = 'block'
+
+    const addPost = document.querySelector('.post-pop button')
+    const postTitle = document.querySelector('.post-pop #name')
+    const postImg = document.querySelector('.post-pop #image')
+    addPost.addEventListener('click', ()=>{
+
+      fetch('/posts',{
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: user.id,
+          title: postTitle.value,
+          img_url: postImg.value,
+          date: '2023-04-06'
+        })
+      }).then(addPostPop.style.display = 'none')
+
+    })
+    // addPostPop.style.display = 'none'
+  })
   actionsTd.appendChild(addBlogSpan);
 
   tr.appendChild(actionsTd);

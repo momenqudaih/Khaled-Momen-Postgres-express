@@ -29,8 +29,10 @@ exports.updateUserQuery = (req, res) => {
     .catch((err) => res.status(500).send("Internal Error"));
 };
 
-exports.deleteUserQuery = (req, res) => {
+exports.deleteUserController = (req, res) => {
+  // console.log(req.params.id);
+  
   deleteUserQuery(req.params.id)
-    .then((data) => res.redirect("/"))
+    .then()
     .catch((err) => res.status(500).send(err));
 };
