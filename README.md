@@ -14,7 +14,7 @@ You can see a live demo of this project [here](https://example.com/blog-posts).
 
 You can download or clone the source code from this repository:
 
-git clone https://github.com/username/blog-posts.git
+git clone https://github.com/GSG-G13/Khaled-Momen-Postgres-express.git
 
 ## Usage
 
