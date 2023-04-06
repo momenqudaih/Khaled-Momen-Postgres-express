@@ -32,9 +32,9 @@ exports.updateUserQuery = (req, res) => {
 exports.deleteUserQuery = (req, res) => {
   console.log(req.params.id);
   
-  deleteUserQuery(JSON.stringify(req.params.id))
+  deleteUserQuery(req.params.id)
     .then((data) => 
-      res.json(data.rows)
+    res.redirect('/')
     )
     .catch((err) => res.status(500).send(err));
 };

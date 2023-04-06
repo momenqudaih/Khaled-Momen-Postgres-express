@@ -4,6 +4,9 @@ const avatarInput = document.querySelector("#input-avatar-url");
 const submitBtn = document.querySelector("#submitBtn");
 const tableBody = document.querySelector("#table-body");
 
+const popup = document.querySelector('.popup');
+
+
 function createUserRow(user) {
   const tr = document.createElement("tr");
 
@@ -31,21 +34,54 @@ function createUserRow(user) {
   const editSpan = document.createElement("span");
   editSpan.classList.add("edit");
   editSpan.textContent = "Edit";
-  editSpan.onclick = function () {
-    editUser(user.id);
-  };
+
   actionsTd.appendChild(editSpan);
 
   const separator = document.createTextNode(" | ");
   actionsTd.appendChild(separator);
 
+  editSpan.addEventListener('click', () => {
+
+    popup.style.display = "block";
+
+    const updateName = document.getElementById("name");
+    updateName.value = user.name
+    const updateEmail = document.getElementById("email");
+    updateEmail.value = user.email
+    const updateImg = document.getElementById("image");
+    updateImg.value = user.img_url
+    const updateButton = document.querySelector('.update-button')
+
+    updateButton.addEventListener('click', () => {
+      fetch('/users', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'Application/json'
+        },
+        body: JSON.stringify({
+          id: user.id,
+          name: updateName.value,
+          email: updateEmail.value,
+          avatarInput: updateImg.value
+        })
+
+      })
+        .then(window.location.reload())
+    })
+
+
+
+  })
+
   const deleteSpan = document.createElement("span");
   deleteSpan.classList.add("delete");
   deleteSpan.textContent = "Delete";
   deleteSpan.onclick = function () {
-    fetch(`/users/?id=${user.id}`, {
+    fetch(`/users/${user.id}`, {
       method: "DELETE",
-    });
+    }).then(
+      window.location.reload()
+    );
   };
   actionsTd.appendChild(deleteSpan);
 
@@ -88,9 +124,10 @@ submitBtn.addEventListener("click", () => {
   })
     .then((res) => res.json())
     .then((usersData) => {
-      console.log(usersData);
       usersData.forEach((user) => {
         tableBody.append(createUserRow(user));
       });
     });
 });
+
+
