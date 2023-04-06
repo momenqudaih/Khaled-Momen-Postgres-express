@@ -13,7 +13,7 @@ if (!dbUrl) throw new Error("No Database URL!!!");
 
 const pool = new Pool({
   connectionString: dbUrl,
-  ssl: process.env.NODE_ENV == test ? false : true,
+  ssl: process.env.NODE_ENV == 'test' ? false : true,
 });
 
 module.exports = {
