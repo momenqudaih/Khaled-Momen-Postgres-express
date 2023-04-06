@@ -4,7 +4,7 @@ This is a simple blog posts page design with a search bar and a beautiful UI usi
 
 ## Demo
 
-You can see a live demo of this project [here](https://momen-khaled-blog.onrender.com/).
+You can see a live demo of this project [here](https://blogposts-vam7.onrender.com/).
 
 ## Screenshots
 
